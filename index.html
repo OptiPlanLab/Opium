@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OPIUM — Your Business Advisor · OptiPlan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    :root {
+      --navy: #1B365D;
+      --steel: #4A86B8;
+      --sky: #89C4E8;
+      --ice: #D6EAF5;
+      --white: #FFFFFF;
+      --text: #2C3E50;
+      --text-light: #5D6D7E;
+      --success: #27AE60;
+      --warning: #F39C12;
+      --danger: #E74C3C;
+      --gold: #C9A84C;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    .page-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 48px;
+    }
+    @media (max-width: 768px) {
+      .page-container { padding: 24px 20px; }
+    }
+    h1, h2 { font-family: 'Playfair Display', serif; color: var(--navy); }
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 8px; }
+    h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 16px; margin-top: 0; }
+    h3 {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--steel);
+      margin-bottom: 12px;
+      margin-top: 32px;
+    }
+    p { margin-bottom: 16px; }
+    a { color: var(--steel); text-decoration: none; border-bottom: 1px solid var(--sky); }
+    a:hover { color: var(--navy); border-bottom-color: var(--navy); }
+
+    /* Header */
+    .header-bar {
+      height: 4px;
+      background: linear-gradient(to right, var(--navy), var(--steel), var(--sky));
+    }
+    .page-header {
+      border-bottom: 1px solid var(--ice);
+      padding-bottom: 32px;
+      margin-bottom: 48px;
+    }
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 24px;
+      margin-bottom: 20px;
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-area img {
+      height: 42px;
+      width: 42px;
+      border-radius: 4px;
+    }
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--steel);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .page-subtitle {
+      font-family: 'Source Sans 3', sans-serif;
+      color: var(--text-light);
+      font-size: 1.1rem;
+      font-weight: 300;
+      margin-top: 4px;
+    }
+
+    /* Language Toggle */
+    .lang-toggle {
+      display: flex;
+      border: 1px solid var(--ice);
+      border-radius: 4px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .lang-btn {
+      padding: 8px 16px;
+      border: none;
+      background: var(--white);
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: var(--text-light);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .lang-btn:first-child { border-right: 1px solid var(--ice); }
+    .lang-btn.active {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .lang-btn:hover:not(.active) { background: var(--ice); }
+
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+    }
+    .hero-text p {
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+    .hero-identity {
+      background: var(--ice);
+      padding: 32px;
+      border-radius: 4px;
+      border: 1px solid var(--ice);
+    }
+    .hero-identity h3 {
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+    .identity-trait {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .trait-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--navy);
+      color: white;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .trait-text {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .trait-text strong { color: var(--navy); }
+
+    /* Metric Cards */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    @media (max-width: 900px) {
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 500px) {
+      .metrics-grid { grid-template-columns: 1fr; }
+    }
+    .metric-card {
+      background: var(--white);
+      border: 1px solid var(--ice);
+      border-top: 3px solid var(--steel);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .metric-label {
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-light);
+    }
+    .metric-value {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--navy);
+    }
+    .metric-desc {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 1.4;
+    }
+
+    /* Section Dividers */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 48px 0 32px;
+    }
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--ice);
+    }
+    .divider-label {
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-light);
+      white-space: nowrap;
+    }
+
+    /* Tabs */
+    .tabs { margin-bottom: 48px; }
+    .tab-nav {
+      display: flex;
+      border-bottom: 2px solid var(--ice);
+      gap: 0;
+      overflow-x: auto;
+    }
+    .tab-btn {
+      padding: 14px 24px;
+      border: none;
+      background: none;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-light);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      white-space: nowrap;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .tab-btn:hover { color: var(--navy); }
+    .tab-btn.active {
+      color: var(--navy);
+      border-bottom-color: var(--steel);
+    }
+    .tab-content {
+      display: none;
+      padding: 32px 0;
+    }
+    .tab-content.active { display: block; }
+
+    /* Capability Cards */
+    .cap-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 768px) {
+      .cap-grid { grid-template-columns: 1fr; }
+    }
+    .cap-card {
+      border: 1px solid var(--ice);
+      padding: 28px;
+      border-radius: 4px;
+      transition: border-color 0.2s;
+    }
+    .cap-card:hover { border-color: var(--sky); }
+    .cap-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .cap-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--ice);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--steel);
+      flex-shrink: 0;
+    }
+    .cap-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--navy);
+    }
+    .cap-desc {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+    .cap-examples {
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+    .cap-examples strong {
+      color: var(--steel);
+      font-weight: 600;
+    }
+
+    /* Prompt Cards */
+    .prompt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    @media (max-width: 768px) {
+      .prompt-grid { grid-template-columns: 1fr; }
+    }
+    .prompt-card {
+      border: 1px solid var(--ice);
+      border-radius: 4px;
+      padding: 20px 24px;
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .prompt-card:hover {
+      border-color: var(--steel);
+      background: #f8fbfe;
+    }
+    .prompt-card.copied {
+      border-color: var(--success);
+      background: #f0faf4;
+    }
+    .prompt-category {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-light);
+      margin-bottom: 8px;
+    }
+    .prompt-text {
+      font-size: 0.95rem;
+      color: var(--navy);
+      font-weight: 600;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    .prompt-why {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      line-height: 1.4;
+    }
+    .copy-hint {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      font-size: 0.7rem;
+      color: var(--text-light);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      opacity: 0;
+      transition: opacity 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .prompt-card:hover .copy-hint { opacity: 1; }
+    .prompt-card.copied .copy-hint {
+      opacity: 1;
+      color: var(--success);
+    }
+    [dir="rtl"] .copy-hint { right: auto; left: 14px; }
+
+    /* Accordion */
+    .accordion { margin-top: 16px; }
+    .acc-item {
+      border: 1px solid var(--ice);
+      margin-bottom: -1px;
+    }
+    .acc-item:first-child { border-radius: 4px 4px 0 0; }
+    .acc-item:last-child { border-radius: 0 0 4px 4px; }
+    .acc-header {
+      padding: 18px 24px;
+      background: var(--white);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      color: var(--navy);
+      font-size: 1rem;
+      transition: background 0.2s;
+      user-select: none;
+    }
+    .acc-header:hover { background: #f8fbfe; }
+    .acc-arrow {
+      font-size: 1rem;
+      color: var(--text-light);
+      transition: transform 0.25s;
+      display: flex;
+    }
+    .acc-item.open .acc-arrow { transform: rotate(180deg); }
+    .acc-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .acc-body-inner {
+      padding: 0 24px 24px;
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+    .acc-body-inner p { margin-bottom: 12px; }
+
+    /* Document Types Grid */
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 16px;
+    }
+    @media (max-width: 900px) {
+      .doc-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 500px) {
+      .doc-grid { grid-template-columns: 1fr; }
+    }
+    .doc-card {
+      border: 1px solid var(--ice);
+      border-radius: 4px;
+      padding: 24px;
+    }
+    .doc-card-title {
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+    .doc-card-format {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--steel);
+      margin-bottom: 10px;
+    }
+    .doc-card-desc {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    /* Founder Profiles */
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 16px;
+    }
+    @media (max-width: 768px) {
+      .founder-grid { grid-template-columns: 1fr; }
+    }
+    .founder-card {
+      border: 1px solid var(--ice);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .founder-card-header {
+      background: var(--navy);
+      color: white;
+      padding: 20px 24px;
+    }
+    .founder-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 4px;
+    }
+    .founder-role {
+      font-size: 0.85rem;
+      color: var(--sky);
+      font-weight: 300;
+    }
+    .founder-card-body { padding: 24px; }
+    .founder-section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-light);
+      margin-bottom: 8px;
+      margin-top: 18px;
+    }
+    .founder-section-label:first-child { margin-top: 0; }
+    .founder-detail {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    /* Callout */
+    .callout {
+      display: flex;
+      gap: 16px;
+      padding: 20px 24px;
+      border-left: 4px solid var(--steel);
+      background: var(--ice);
+      border-radius: 0 4px 4px 0;
+      margin: 24px 0;
+    }
+    [dir="rtl"] .callout {
+      border-left: none;
+      border-right: 4px solid var(--steel);
+      border-radius: 4px 0 0 4px;
+    }
+    .callout--warning { border-left-color: var(--warning); background: #FEF9E7; }
+    .callout--action { border-left-color: var(--success); background: #EAFAF1; }
+    .callout--danger { border-left-color: var(--danger); background: #FDEDEC; }
+    [dir="rtl"] .callout--warning { border-right-color: var(--warning); }
+    [dir="rtl"] .callout--action { border-right-color: var(--success); }
+    [dir="rtl"] .callout--danger { border-right-color: var(--danger); }
+    .callout-icon {
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      color: var(--steel);
+      display: flex;
+      align-items: center;
+    }
+    .callout--action .callout-icon { color: var(--success); }
+    .callout-content { font-size: 0.95rem; line-height: 1.6; }
+    .callout-content strong { color: var(--navy); }
+
+    /* Badges */
+    .badge {
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+      display: inline-block;
+    }
+    .badge--live { background: var(--success); color: white; }
+    .badge--v2 { background: var(--steel); color: white; }
+    .badge--high { background: var(--danger); color: white; }
+
+    /* Boundary List */
+    .boundary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 16px;
+    }
+    @media (max-width: 768px) {
+      .boundary-grid { grid-template-columns: 1fr; }
+    }
+    .boundary-col h3 { margin-top: 0; }
+    .boundary-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .boundary-icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: white;
+      margin-top: 2px;
+    }
+    .boundary-icon.yes { background: var(--success); }
+    .boundary-icon.no { background: var(--danger); }
+
+    /* Quote */
+    .founder-quote {
+      border-left: 3px solid var(--gold);
+      padding: 16px 24px;
+      margin: 24px 0;
+      background: transparent;
+    }
+    [dir="rtl"] .founder-quote {
+      border-left: none;
+      border-right: 3px solid var(--gold);
+    }
+    .founder-quote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--navy);
+      line-height: 1.6;
+      margin: 0 0 8px;
+    }
+    .founder-quote cite {
+      font-family: 'Source Sans 3', sans-serif;
+      font-style: normal;
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    /* Data Table */
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+    }
+    table.data-table th {
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 12px 16px;
+      text-align: left;
+    }
+    [dir="rtl"] table.data-table th { text-align: right; }
+    table.data-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--ice);
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+    table.data-table tr:nth-child(even) { background: var(--ice); }
+
+    /* Footer */
+    .page-footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--ice);
+      text-align: center;
+    }
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+    .footer-separator { color: var(--sky); margin: 0 8px; }
+    .footer-tagline {
+      color: var(--text-light);
+      font-size: 0.8rem;
+    }
+    .footer-meta {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.75rem;
+      color: var(--text-light);
+    }
+
+    /* Smooth scroll */
+    html { scroll-behavior: smooth; }
+
+    /* Tabler icon sizing in context */
+    .ti { vertical-align: middle; }
+  </style>
+</head>
+<body>
+  <div class="page-container">
+
+    <!-- HEADER -->
+    <header class="page-header">
+      <div class="header-bar"></div>
+      <div class="header-top">
+        <div class="logo-area">
+          <img src="https://github.com/OptiPlanLab/OptiPlan-Vision/blob/main/LOGO-ICON.png?raw=true" alt="OptiPlan Logo" onerror="this.style.display='none'">
+          <span class="logo-text">OptiPlan</span>
+        </div>
+        <div class="lang-toggle">
+          <button class="lang-btn active" onclick="setLang('en')" id="btn-en">EN</button>
+          <button class="lang-btn" onclick="setLang('he')" id="btn-he">עב</button>
+        </div>
+      </div>
+      <h1 data-en="Meet OPIUM" data-he="הכירו את OPIUM">Meet OPIUM</h1>
+      <p class="page-subtitle" data-en="Your AI Business Advisor &mdash; Strategic Intelligence for OptiPlan" data-he="היועץ העסקי ה-AI שלכם &mdash; מודיעין אסטרטגי עבור OptiPlan">Your AI Business Advisor &mdash; Strategic Intelligence for OptiPlan</p>
+    </header>
+
+    <main>
+
+      <!-- HERO -->
+      <div class="hero">
+        <div class="hero-text">
+          <p data-en="OPIUM is OptiPlan's dedicated business advisor agent &mdash; an always-available strategic partner that knows your product, your market, your competitors, and your fundraising goals inside and out." data-he="OPIUM הוא סוכן היועץ העסקי של OptiPlan &mdash; שותף אסטרטגי זמין תמיד שמכיר לעומק את המוצר, השוק, המתחרים ויעדי הגיוס שלכם.">OPIUM is OptiPlan's dedicated business advisor agent &mdash; an always-available strategic partner that knows your product, your market, your competitors, and your fundraising goals inside and out.</p>
+          <p data-en="Think of OPIUM as a McKinsey engagement manager who left consulting to join a construction-tech accelerator in Tel Aviv. It speaks in concrete numbers, challenges assumptions before validating them, and produces tangible deliverables &mdash; not just conversation." data-he="חשבו על OPIUM כמנהל פרויקט של McKinsey שעזב ייעוץ כדי להצטרף לאקסלרטור construction-tech בתל אביב. הוא מדבר במספרים קונקרטיים, מאתגר הנחות לפני שהוא מאשר אותן, ומייצר תוצרים מוחשיים &mdash; לא רק שיחות.">Think of OPIUM as a McKinsey engagement manager who left consulting to join a construction-tech accelerator in Tel Aviv. It speaks in concrete numbers, challenges assumptions before validating them, and produces tangible deliverables &mdash; not just conversation.</p>
+          <p data-en="Every session with OPIUM ends with an artifact you can use: a slide draft, a pricing model, an ROI calculator, a competitive analysis, or a formatted HTML document ready for investors." data-he="כל שיחה עם OPIUM מסתיימת עם תוצר שתוכלו להשתמש בו: טיוטת שקף, מודל תמחור, מחשבון ROI, ניתוח תחרותי, או דף HTML מעוצב מוכן למשקיעים.">Every session with OPIUM ends with an artifact you can use: a slide draft, a pricing model, an ROI calculator, a competitive analysis, or a formatted HTML document ready for investors.</p>
+        </div>
+        <div class="hero-identity">
+          <h3 data-en="How OPIUM Thinks" data-he="איך OPIUM חושב">How OPIUM Thinks</h3>
+          <div class="identity-trait">
+            <div class="trait-icon">1</div>
+            <div class="trait-text"><strong data-en="Challenge, then build." data-he="מאתגר, ואז בונה.">Challenge, then build.</strong> <span data-en="Pressure-tests your assumptions before reinforcing them. Not a yes-man." data-he="בודק לחץ על ההנחות שלכם לפני שהוא מחזק אותן. לא yes-man.">Pressure-tests your assumptions before reinforcing them. Not a yes-man.</span></div>
+          </div>
+          <div class="identity-trait">
+            <div class="trait-icon">2</div>
+            <div class="trait-text"><strong data-en="Every session → artifact." data-he="כל שיחה → תוצר.">Every session → artifact.</strong> <span data-en="Never just talk. Always produces something tangible you can use." data-he="אף פעם לא רק לדבר. תמיד מייצר משהו מוחשי שתוכלו להשתמש בו.">Never just talk. Always produces something tangible you can use.</span></div>
+          </div>
+          <div class="identity-trait">
+            <div class="trait-icon">3</div>
+            <div class="trait-text"><strong data-en="Research before opinion." data-he="מחקר לפני דעה.">Research before opinion.</strong> <span data-en="Searches the web for competitor pricing, benchmarks, and market data. Cites sources." data-he="מחפש באינטרנט תמחור מתחרים, benchmarks, ונתוני שוק. מצטט מקורות.">Searches the web for competitor pricing, benchmarks, and market data. Cites sources.</span></div>
+          </div>
+          <div class="identity-trait">
+            <div class="trait-icon">4</div>
+            <div class="trait-text"><strong data-en="Options → recommendation." data-he="אפשרויות → המלצה.">Options → recommendation.</strong> <span data-en="Presents 2-3 approaches, then gives a clear recommendation." data-he="מציג 2-3 גישות, ואז נותן המלצה ברורה.">Presents 2-3 approaches, then gives a clear recommendation.</span></div>
+          </div>
+          <div class="identity-trait">
+            <div class="trait-icon">5</div>
+            <div class="trait-text"><strong data-en="Knows the deadline." data-he="מכיר את הדדליין.">Knows the deadline.</strong> <span data-en="Feb 24, 2026 conference. Prioritizes ruthlessly based on what's achievable." data-he="כנס 24 בפברואר 2026. מתעדף בצורה חסרת רחמים לפי מה שניתן להשיג.">Feb 24, 2026 conference. Prioritizes ruthlessly based on what's achievable.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- METRICS: WHAT OPIUM KNOWS -->
+      <div class="section-divider">
+        <span class="divider-label" data-en="What OPIUM Already Knows" data-he="מה OPIUM כבר יודע">What OPIUM Already Knows</span>
+      </div>
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <span class="metric-label" data-en="Knowledge Files" data-he="קבצי ידע">Knowledge Files</span>
+          <span class="metric-value">12</span>
+          <span class="metric-desc" data-en="Covering product, market, pricing, personas, tech, competitors, and founder profiles" data-he="מכסים מוצר, שוק, תמחור, פרסונות, טכנולוגיה, מתחרים ופרופילי מייסדים">Covering product, market, pricing, personas, tech, competitors, and founder profiles</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label" data-en="Product Modules" data-he="מודולי מוצר">Product Modules</span>
+          <span class="metric-value">8</span>
+          <span class="metric-desc" data-en="OptiTrack, OptiTrackFlow, OptiDocs, OptiRisk, OptiGantt, OptiBiz, Hub, Shared" data-he="OptiTrack, OptiTrackFlow, OptiDocs, OptiRisk, OptiGantt, OptiBiz, Hub, Shared">OptiTrack, OptiTrackFlow, OptiDocs, OptiRisk, OptiGantt, OptiBiz, Hub, Shared</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label" data-en="Competitors Profiled" data-he="מתחרים שנותחו">Competitors Profiled</span>
+          <span class="metric-value">8+</span>
+          <span class="metric-desc" data-en="Procore, Monday.com, Aconex, Primavera P6, PlanRadar, Fieldwire, and more" data-he="Procore, Monday.com, Aconex, Primavera P6, PlanRadar, Fieldwire ועוד">Procore, Monday.com, Aconex, Primavera P6, PlanRadar, Fieldwire, and more</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label" data-en="User Personas" data-he="פרסונות משתמשים">User Personas</span>
+          <span class="metric-value">6</span>
+          <span class="metric-desc" data-en="Yael, Oren, Tamar, Rami, Noam, Tamir &mdash; with full workflows and pain points" data-he="יעל, אורן, תמר, רמי, נעם, תמיר &mdash; עם תהליכי עבודה מלאים וכאבים">Yael, Oren, Tamar, Rami, Noam, Tamir &mdash; with full workflows and pain points</span>
+        </div>
+      </div>
+
+      <!-- CAPABILITIES TABS -->
+      <div class="section-divider">
+        <span class="divider-label" data-en="Capabilities" data-he="יכולות">Capabilities</span>
+      </div>
+
+      <div class="tabs">
+        <div class="tab-nav">
+          <button class="tab-btn active" data-tab="strategy" data-en="Strategy &amp; Advisory" data-he="אסטרטגיה וייעוץ">Strategy &amp; Advisory</button>
+          <button class="tab-btn" data-tab="content" data-en="Content Production" data-he="ייצור תוכן">Content Production</button>
+          <button class="tab-btn" data-tab="research" data-en="Research &amp; Analysis" data-he="מחקר וניתוח">Research &amp; Analysis</button>
+          <button class="tab-btn" data-tab="investor" data-en="Investor Prep" data-he="הכנה למשקיעים">Investor Prep</button>
+        </div>
+
+        <!-- TAB: Strategy -->
+        <div class="tab-content active" id="tab-strategy">
+          <p data-en="OPIUM acts as your strategic sparring partner &mdash; challenging assumptions, modeling scenarios, and helping you make decisions with confidence." data-he="OPIUM פועל כשותף אסטרטגי שמאתגר אתכם &mdash; בודק הנחות, מדמה תרחישים, ועוזר לכם לקבל החלטות בביטחון.">OPIUM acts as your strategic sparring partner &mdash; challenging assumptions, modeling scenarios, and helping you make decisions with confidence.</p>
+          <div class="cap-grid">
+            <div class="cap-card">
+              <div class="cap-card-header">
+                <div class="cap-icon"><i class="ti ti-settings"></i></div>
+                <span class="cap-title" data-en="Pricing Model Design" data-he="עיצוב מודל תמחור">Pricing Model Design</span>
+              </div>
+              <p class="cap-desc" data-en="Compare per-user, per-project, hybrid, and ACV models. Get revenue projections for each with Israeli market benchmarks." data-he="השוואת מודלים: per-user, per-project, hybrid, ו-ACV. תחזיות הכנסות לכל מודל עם benchmarks של השוק הישראלי.">Compare per-user, per-project, hybrid, and ACV models. Get revenue projections for each with Israeli market benchmarks.</p>
+              <p class="cap-examples"><strong data-en="Try:" data-he="נסו:">Try:</strong> <span data-en="&quot;Compare per-user vs. hybrid pricing. Model 30 firms at Year 2.&quot;" data-he="&quot;תשווה per-user מול hybrid pricing. תדמה 30 חברות בשנה 2.&quot;">"Compare per-user vs. hybrid pricing. Model 30 firms at Year 2."</span></p>
+            </div>
+            <div class="cap-card">
+              <div class="cap-card-header">
+                <div class="cap-icon"><i class="ti ti-shield"></i></div>
+                <span class="cap-title" data-en="Competitive Moat Analysis" data-he="ניתוח חפיר תחרותי">Competitive Moat Analysis</span>
+              </div>
+              <p class="cap-desc" data-en="Multi-horizon moat framework: short-term (speed), medium-term (data), long-term (lock-in). With investor-ready framing." data-he="מסגרת חפיר רב-אופקית: טווח קצר (מהירות), טווח בינוני (דאטה), טווח ארוך (lock-in). עם מסגור מוכן למשקיעים.">Multi-horizon moat framework: short-term (speed), medium-term (data), long-term (lock-in). With investor-ready framing.</p>
+              <p class="cap-examples"><strong data-en="Try:" data-he="נסו:">Try:</strong> <span data-en="&quot;What's our real moat? Help me explain it in 2 minutes to an investor.&quot;" data-he="&quot;מה החפיר האמיתי שלנו? תעזור לי להסביר את זה ב-2 דקות למשקיע.&quot;">"What's our real moat? Help me explain it in 2 minutes to an investor."</span></p>
+            </div>
+            <div class="cap-card">
+              <div class="cap-card-header">
+                <div class="cap-icon"><i class="ti ti-trending-up"></i></div>
+                <span class="cap-title" data-en="Unit Economics &amp; ROI" data-he="Unit Economics ו-ROI">Unit Economics &amp; ROI</span>
+              </div>
+              <p class="cap-desc" data-en="CAC, LTV, LTV:CAC ratio, break-even analysis. Scenario modeling with conservative/moderate/aggressive projections." data-he="CAC, LTV, יחס LTV:CAC, ניתוח break-even. מודלים תרחישיים עם תחזיות שמרניות/מתונות/אגרסיביות.">CAC, LTV, LTV:CAC ratio, break-even analysis. Scenario modeling with conservative/moderate/aggressive projections.</p>
+              <p class="cap-examples"><strong data-en="Try:" data-he="נסו:">Try:</strong> <span data-en="&quot;Build a 36-month ROI model. Start with 8 paying firms in Year 1.&quot;" data-he="&quot;בנה מודל ROI ל-36 חודשים. התחל עם 8 חברות משלמות בשנה 1.&quot;">"Build a 36-month ROI model. Start with 8 paying firms in Year 1."</span></p>
+            </div>
+            <div class="cap-card">
+              <div class="cap-card-header">
+                <div class="cap-icon"><i class="ti ti-target"></i></div>
+                <span class="cap-title" data-en="Market Sizing &amp; Validation" data-he="גודל שוק וולידציה">Market Sizing &amp; Validation</span>
+              </div>
+              <p class="cap-desc" data-en="Stress-test the &#8362;200B → &#8362;10B → &#8362;2B market funnel. TAM/SAM/SOM with defensible methodology." data-he="מבחן לחץ על משפך השוק &#8362;200B → &#8362;10B → &#8362;2B. ניתוח TAM/SAM/SOM עם מתודולוגיה הגנתית.">Stress-test the &#8362;200B → &#8362;10B → &#8362;2B market funnel. TAM/SAM/SOM with defensible methodology.</p>
+              <p class="cap-examples"><strong data-en="Try:" data-he="נסו:">Try:</strong> <span data-en="&quot;Is our market sizing defensible? Find current Israeli infrastructure data.&quot;" data-he="&quot;האם ה-market sizing שלנו הגנתי? תמצא נתוני תשתיות ישראליים עדכניים.&quot;">"Is our market sizing defensible? Find current Israeli infrastructure data."</span></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: Content -->
+        <div class="tab-content" id="tab-content">
+          <p data-en="OPIUM produces formatted, investor-grade documents following the OptiPlan design system. Every output is ready to use or hand off to Ben for integration." data-he="OPIUM מייצר מסמכים מעוצבים ברמת משקיעים לפי מערכת העיצוב של OptiPlan. כל תוצר מוכן לשימוש או להעברה לבן לאינטגרציה.">OPIUM produces formatted, investor-grade documents following the OptiPlan design system. Every output is ready to use or hand off to Ben for integration.</p>
+          <div class="cap-grid">
+            <div class="cap-card">
+              <div class="cap-card-header">
+                <div class="cap-icon"><i class="ti ti-file-text"></i></div>
+                <span class="cap-title" data-en="Slide Content Drafts" data-he="טיוטות תוכן שקפים">Slide Content Drafts</span>
+              </div>
+              <p class="cap-desc" data-en="Draft headlines, key numbers, and supporting narratives for individual investor deck slides. Follows the 10-slide pitch arc." data-he="טיוטות כותרות, מספרים מרכזיים ונרטיבים תומכים לשקפי המצגת למשקיעים. עוקב אחרי מבנה ה-10 שקפים.">Draft headlines, key numbers, and supporting narratives for individual investor deck slides. Follows the 10-slide pitch arc.</p>
+              <p class="cap-examples"><strong data-en="Try:" data-he="נסו:">Try:</strong> <span data-en="&quot;Draft the Technology slide for our investor deck.&quot;" data-he="&quot;תכין טיוטה לשקף הטכנולוגיה למצגת למשקיעים.&quot;">"Draft the Technology slide for our investor deck."</span></p>
+            </div>
+            <div class="cap-card">
+              <div class="cap-card-header">
+                <div class="cap-icon"><i class="ti ti-palette"></i></div>
+                <span class="cap-title" data-en="HTML Pages &amp; One-Pagers" data-he="דפי HTML ו-One-Pagers">HTML Pages &amp; One-Pagers</span>
+              </div>
+              <p class="cap-desc" data-en="Polished HTML documents with OptiPlan branding: executive summaries, competitive analyses, meeting minutes, handoff docs." data-he="מסמכי HTML מלוטשים עם מיתוג OptiPlan: תקצירים מנהלים, ניתוחים תחרותיים, סיכומי ישיבות, מסמכי Handoff.">Polished HTML documents with OptiPlan branding: executive summaries, competitive analyses, meeting minutes, handoff docs.</p>
+              <p class="cap-examples"><strong data-en="Try:" data-he="נסו:">Try:</strong> <span data-en="&quot;Create an executive summary one-pager for investors as HTML.&quot;" data-he="&quot;תיצור one-pager תקציר מנהלים למשקיעים כ-HTML.&quot;">"Create an executive summary one-pager for investors as HTML."</span></p>
+            </div>
+            <div class="cap-card">
+              <div class="cap-card-header">
+                <div class="cap-icon"><i class="ti ti-chart-bar"></i></div>
+                <span class="cap-title" data-en="Financial Models" data-he="מודלים פיננסיים">Financial Models</span>
+              </div>
+              <p class="cap-desc" data-en="Revenue projections, use-of-funds breakdowns, milestone maps, and investor ROI scenarios with concrete numbers." data-he="תחזיות הכנסות, פירוט שימוש בכספים, מפות אבני דרך, ותרחישי ROI למשקיעים עם מספרים קונקרטיים.">Revenue projections, use-of-funds breakdowns, milestone maps, and investor ROI scenarios with concrete numbers.</p>
+              <p class="cap-examples"><strong data-en="Try:" data-he="נסו:">Try:</strong> <span data-en="&quot;Create a 24-month financial projection for the &#8362;4.5M raise.&quot;" data-he="&quot;תיצור תחזית פיננסית ל-24 חודשים עבור גיוס ה-&#8362;4.5M.&quot;">"Create a 24-month financial projection for the &#8362;4.5M raise."</span></p>
+            </div>
+            <div class="cap-card">
+              <div class="cap-card-header">
+                <div class="cap-icon"><i class="ti ti-arrows-exchange"></i></div>
+                <span class="cap-title" data-en="Handoff Documents" data-he="מסמכי Handoff">Handoff Documents</span>
+              </div>
+              <p class="cap-desc" data-en="Structured documents that carry context between conversations, agents, or team members. Perfect for cross-session continuity with Ben." data-he="מסמכים מובנים שמעבירים הקשר בין שיחות, סוכנים, או חברי צוות. מושלם להמשכיות בין-שיחות עם בן.">Structured documents that carry context between conversations, agents, or team members. Perfect for cross-session continuity with Ben.</p>
+              <p class="cap-examples"><strong data-en="Try:" data-he="נסו:">Try:</strong> <span data-en="&quot;Produce a handoff document of this session for Ben.&quot;" data-he="&quot;תייצר מסמך Handoff של השיחה הזו לבן.&quot;">"Produce a handoff document of this session for Ben."</span></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: Research -->
+        <div class="tab-content" id="tab-research">
+          <p data-en="OPIUM searches the web in real-time for current data &mdash; competitor pricing, SaaS benchmarks, market trends, and construction tech news. No stale training data." data-he="OPIUM מחפש באינטרנט בזמן אמת נתונים עדכניים &mdash; תמחור מתחרים, SaaS benchmarks, טרנדים בשוק, וחדשות construction tech. בלי נתוני אימון מיושנים.">OPIUM searches the web in real-time for current data &mdash; competitor pricing, SaaS benchmarks, market trends, and construction tech news. No stale training data.</p>
+          <div class="cap-grid">
+            <div class="cap-card">
+              <div class="cap-card-header">
+                <div class="cap-icon"><i class="ti ti-search"></i></div>
+                <span class="cap-title" data-en="Competitor Deep Dives" data-he="צלילות עומק למתחרים">Competitor Deep Dives</span>
+              </div>
+              <p class="cap-desc" data-en="Current pricing, features, funding status, and strategic positioning for any competitor an investor might ask about." data-he="תמחור עדכני, פיצ'רים, סטטוס גיוס, ומיצוב אסטרטגי לכל מתחרה שמשקיע עשוי לשאול עליו.">Current pricing, features, funding status, and strategic positioning for any competitor an investor might ask about.</p>
+              <p class="cap-examples"><strong data-en="Try:" data-he="נסו:">Try:</strong> <span data-en="&quot;What's Procore's latest pricing? How do they compare to us?&quot;" data-he="&quot;מה התמחור העדכני של Procore? איך הם משתווים אלינו?&quot;">"What's Procore's latest pricing? How do they compare to us?"</span></p>
+            </div>
+            <div class="cap-card">
+              <div class="cap-card-header">
+                <div class="cap-icon"><i class="ti ti-chart-dots-3"></i></div>
+                <span class="cap-title" data-en="SaaS Benchmarks" data-he="SaaS Benchmarks">SaaS Benchmarks</span>
+              </div>
+              <p class="cap-desc" data-en="Industry benchmarks for churn, NRR, CAC, LTV:CAC, gross margins &mdash; verified from current sources." data-he="Benchmarks תעשייתיים ל-churn, NRR, CAC, LTV:CAC, gross margins &mdash; מאומתים ממקורות עדכניים.">Industry benchmarks for churn, NRR, CAC, LTV:CAC, gross margins &mdash; verified from current sources.</p>
+              <p class="cap-examples"><strong data-en="Try:" data-he="נסו:">Try:</strong> <span data-en="&quot;What are best-in-class NRR benchmarks for vertical SaaS?&quot;" data-he="&quot;מה ה-NRR benchmarks הכי טובים ל-vertical SaaS?&quot;">"What are best-in-class NRR benchmarks for vertical SaaS?"</span></p>
+            </div>
+            <div class="cap-card">
+              <div class="cap-card-header">
+                <div class="cap-icon"><i class="ti ti-world"></i></div>
+                <span class="cap-title" data-en="Market Intelligence" data-he="מודיעין שוק">Market Intelligence</span>
+              </div>
+              <p class="cap-desc" data-en="Israeli construction tech landscape, international expansion markets, regulatory environment updates." data-he="נוף ה-construction tech הישראלי, שווקי התרחבות בינלאומיים, עדכוני סביבה רגולטורית.">Israeli construction tech landscape, international expansion markets, regulatory environment updates.</p>
+              <p class="cap-examples"><strong data-en="Try:" data-he="נסו:">Try:</strong> <span data-en="&quot;What construction tech companies raised rounds in the last 6 months?&quot;" data-he="&quot;אילו חברות construction tech גייסו סבבים ב-6 החודשים האחרונים?&quot;">"What construction tech companies raised rounds in the last 6 months?"</span></p>
+            </div>
+            <div class="cap-card">
+              <div class="cap-card-header">
+                <div class="cap-icon"><i class="ti ti-currency-shekel"></i></div>
+                <span class="cap-title" data-en="Fundraising Intelligence" data-he="מודיעין גיוס">Fundraising Intelligence</span>
+              </div>
+              <p class="cap-desc" data-en="Angel round norms, valuation benchmarks, Israeli pre-seed landscape, term sheet structures." data-he="נורמות סבבי אנג'ל, benchmarks שווי, נוף pre-seed ישראלי, מבנה term sheets.">Angel round norms, valuation benchmarks, Israeli pre-seed landscape, term sheet structures.</p>
+              <p class="cap-examples"><strong data-en="Try:" data-he="נסו:">Try:</strong> <span data-en="&quot;What's a typical pre-seed valuation for Israeli B2B SaaS?&quot;" data-he="&quot;מה שווי pre-seed טיפוסי ל-B2B SaaS ישראלי?&quot;">"What's a typical pre-seed valuation for Israeli B2B SaaS?"</span></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: Investor Prep -->
+        <div class="tab-content" id="tab-investor">
+          <p data-en="OPIUM helps you prepare for the Feb 24 conference and future investor meetings with focused, practical coaching." data-he="OPIUM עוזר לכם להתכונן לכנס ב-24 בפברואר ולפגישות משקיעים עתידיות עם אימון ממוקד ומעשי.">OPIUM helps you prepare for the Feb 24 conference and future investor meetings with focused, practical coaching.</p>
+          <div class="cap-grid">
+            <div class="cap-card">
+              <div class="cap-card-header">
+                <div class="cap-icon"><i class="ti ti-microphone"></i></div>
+                <span class="cap-title" data-en="Pitch Narrative Coaching" data-he="אימון נרטיב Pitch">Pitch Narrative Coaching</span>
+              </div>
+              <p class="cap-desc" data-en="Structure the 10-minute pitch arc: hook, problem, market, solution, traction, tech, business model, team, ask, close." data-he="מבנה ה-pitch של 10 דקות: hook, בעיה, שוק, פתרון, traction, טכנולוגיה, מודל עסקי, צוות, בקשה, סיום.">Structure the 10-minute pitch arc: hook, problem, market, solution, traction, tech, business model, team, ask, close.</p>
+              <p class="cap-examples"><strong data-en="Try:" data-he="נסו:">Try:</strong> <span data-en="&quot;Help me structure our 10-minute investor pitch.&quot;" data-he="&quot;עזור לי לבנות את ה-pitch של 10 דקות למשקיעים.&quot;">"Help me structure our 10-minute investor pitch."</span></p>
+            </div>
+            <div class="cap-card">
+              <div class="cap-card-header">
+                <div class="cap-icon"><i class="ti ti-message-question"></i></div>
+                <span class="cap-title" data-en="Tough Question Prep" data-he="הכנה לשאלות קשות">Tough Question Prep</span>
+              </div>
+              <p class="cap-desc" data-en="Generate the 10 hardest questions investors will ask, with confident answers based on real data. Role-play the Q&amp;A." data-he="מייצר את 10 השאלות הקשות ביותר שמשקיעים ישאלו, עם תשובות בטוחות מבוססות נתונים. משחק תפקידים של Q&amp;A.">Generate the 10 hardest questions investors will ask, with confident answers based on real data. Role-play the Q&amp;A.</p>
+              <p class="cap-examples"><strong data-en="Try:" data-he="נסו:">Try:</strong> <span data-en="&quot;Give me the 10 toughest investor questions and draft answers.&quot;" data-he="&quot;תן לי את 10 השאלות הקשות ביותר של משקיעים ותכין תשובות.&quot;">"Give me the 10 toughest investor questions and draft answers."</span></p>
+            </div>
+            <div class="cap-card">
+              <div class="cap-card-header">
+                <div class="cap-icon"><i class="ti ti-bulb"></i></div>
+                <span class="cap-title" data-en="Technology Narrative" data-he="נרטיב טכנולוגי">Technology Narrative</span>
+              </div>
+              <p class="cap-desc" data-en="Frame the tech story for non-technical investors. Clearly separate what works NOW vs. V2 vision." data-he="מסגור הסיפור הטכנולוגי למשקיעים לא טכניים. הפרדה ברורה בין מה שעובד עכשיו ל-V2 vision.">Frame the tech story for non-technical investors. Clearly separate what works NOW vs. V2 vision.</p>
+              <p class="cap-examples"><strong data-en="Try:" data-he="נסו:">Try:</strong> <span data-en="&quot;How do I explain our AI capabilities without overpromising?&quot;" data-he="&quot;איך אני מסביר את יכולות ה-AI שלנו בלי להבטיח יותר מדי?&quot;">"How do I explain our AI capabilities without overpromising?"</span></p>
+            </div>
+            <div class="cap-card">
+              <div class="cap-card-header">
+                <div class="cap-icon"><i class="ti ti-coins"></i></div>
+                <span class="cap-title" data-en="The Ask &amp; Use of Funds" data-he="הבקשה ושימוש בכספים">The Ask &amp; Use of Funds</span>
+              </div>
+              <p class="cap-desc" data-en="Frame the &#8362;4.5M ask with clear use-of-funds allocation, milestone map, and investor ROI story." data-he="מסגור בקשת ה-&#8362;4.5M עם הקצאת שימוש בכספים ברורה, מפת אבני דרך, וסיפור ROI למשקיע.">Frame the &#8362;4.5M ask with clear use-of-funds allocation, milestone map, and investor ROI story.</p>
+              <p class="cap-examples"><strong data-en="Try:" data-he="נסו:">Try:</strong> <span data-en="&quot;Help me build the 'Ask' slide with milestones and ROI.&quot;" data-he="&quot;עזור לי לבנות את שקף ה-Ask עם אבני דרך ו-ROI.&quot;">"Help me build the 'Ask' slide with milestones and ROI."</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRY ASKING ME -->
+      <div class="section-divider">
+        <span class="divider-label" data-en="Quick Start &mdash; Try These Prompts" data-he="התחלה מהירה &mdash; נסו את הפרומפטים האלה">Quick Start &mdash; Try These Prompts</span>
+      </div>
+      <p data-en="Click any prompt to copy it. Paste it into a new conversation with OPIUM to get started immediately." data-he="לחצו על כל פרומפט כדי להעתיק. הדביקו בשיחה חדשה עם OPIUM כדי להתחיל מיד.">Click any prompt to copy it. Paste it into a new conversation with OPIUM to get started immediately.</p>
+
+      <div class="prompt-grid">
+        <div class="prompt-card" onclick="copyPrompt(this)">
+          <span class="copy-hint"><i class="ti ti-copy"></i> <span data-en="Click to copy" data-he="לחצו להעתקה">Click to copy</span></span>
+          <div class="prompt-category" data-en="Investor Deck" data-he="מצגת משקיעים">Investor Deck</div>
+          <div class="prompt-text" data-en="Draft the Technology / Algorithm slide for our investor deck. Show what works NOW vs. V2." data-he="תכין טיוטה לשקף הטכנולוגיה / אלגוריתם למצגת המשקיעים. תראה מה עובד עכשיו מול V2.">Draft the Technology / Algorithm slide for our investor deck. Show what works NOW vs. V2.</div>
+          <div class="prompt-why" data-en="Addresses the #1 gap identified by Lior Shachar and consultants." data-he="מטפל בפער מספר 1 שזוהה על ידי ליאור שחר והיועצים.">Addresses the #1 gap identified by Lior Shachar and consultants.</div>
+        </div>
+        <div class="prompt-card" onclick="copyPrompt(this)">
+          <span class="copy-hint"><i class="ti ti-copy"></i> <span data-en="Click to copy" data-he="לחצו להעתקה">Click to copy</span></span>
+          <div class="prompt-category" data-en="Business Model" data-he="מודל עסקי">Business Model</div>
+          <div class="prompt-text" data-en="Compare per-user vs. per-project vs. hybrid pricing. Show revenue scenarios for 30 firms at Year 2." data-he="תשווה per-user מול per-project מול hybrid pricing. תראה תרחישי הכנסות ל-30 חברות בשנה 2.">Compare per-user vs. per-project vs. hybrid pricing. Show revenue scenarios for 30 firms at Year 2.</div>
+          <div class="prompt-why" data-en="The pricing model is still open &mdash; this gives you a decision-ready comparison." data-he="מודל התמחור עדיין פתוח &mdash; זה נותן השוואה מוכנה להחלטה.">The pricing model is still open &mdash; this gives you a decision-ready comparison.</div>
+        </div>
+        <div class="prompt-card" onclick="copyPrompt(this)">
+          <span class="copy-hint"><i class="ti ti-copy"></i> <span data-en="Click to copy" data-he="לחצו להעתקה">Click to copy</span></span>
+          <div class="prompt-category" data-en="Investor Prep" data-he="הכנה למשקיעים">Investor Prep</div>
+          <div class="prompt-text" data-en="Generate the 10 toughest questions an angel investor will ask us. Draft confident answers using real data." data-he="תייצר את 10 השאלות הקשות ביותר שמשקיע אנג'ל ישאל אותנו. תכין תשובות בטוחות מבוססות נתונים אמיתיים.">Generate the 10 toughest questions an angel investor will ask us. Draft confident answers using real data.</div>
+          <div class="prompt-why" data-en="Prepare for the Feb 24 conference Q&amp;A. Build confidence before presenting." data-he="הכנה ל-Q&amp;A של כנס 24 בפברואר. בניית ביטחון לפני ההצגה.">Prepare for the Feb 24 conference Q&amp;A. Build confidence before presenting.</div>
+        </div>
+        <div class="prompt-card" onclick="copyPrompt(this)">
+          <span class="copy-hint"><i class="ti ti-copy"></i> <span data-en="Click to copy" data-he="לחצו להעתקה">Click to copy</span></span>
+          <div class="prompt-category" data-en="Competitive Strategy" data-he="אסטרטגיה תחרותית">Competitive Strategy</div>
+          <div class="prompt-text" data-en="An investor asks: &quot;What prevents someone from copying you with Monday.com + AI?&quot; Give me a 2-minute answer." data-he="משקיע שואל: &quot;מה מונע ממישהו להעתיק אתכם עם Monday.com + AI?&quot; תן לי תשובה של 2 דקות.">An investor asks: "What prevents someone from copying you with Monday.com + AI?" Give me a 2-minute answer.</div>
+          <div class="prompt-why" data-en="Directly addresses Amit's core anxiety about competitive moat." data-he="מטפל ישירות בחרדה המרכזית של עמית לגבי החפיר התחרותי.">Directly addresses Amit's core anxiety about competitive moat.</div>
+        </div>
+        <div class="prompt-card" onclick="copyPrompt(this)">
+          <span class="copy-hint"><i class="ti ti-copy"></i> <span data-en="Click to copy" data-he="לחצו להעתקה">Click to copy</span></span>
+          <div class="prompt-category" data-en="Financial Model" data-he="מודל פיננסי">Financial Model</div>
+          <div class="prompt-text" data-en="Build a 24-month financial model for the &#8362;4.5M raise. Include MRR trajectory, burn rate, and Series A readiness." data-he="בנה מודל פיננסי ל-24 חודשים עבור גיוס ה-&#8362;4.5M. כלול מסלול MRR, burn rate, ומוכנות ל-Series A.">Build a 24-month financial model for the &#8362;4.5M raise. Include MRR trajectory, burn rate, and Series A readiness.</div>
+          <div class="prompt-why" data-en="Creates the financial backbone for the investor deck's Business Model slide." data-he="יוצר את עמוד השדרה הפיננסי לשקף המודל העסקי במצגת למשקיעים.">Creates the financial backbone for the investor deck's Business Model slide.</div>
+        </div>
+        <div class="prompt-card" onclick="copyPrompt(this)">
+          <span class="copy-hint"><i class="ti ti-copy"></i> <span data-en="Click to copy" data-he="לחצו להעתקה">Click to copy</span></span>
+          <div class="prompt-category" data-en="Market Analysis" data-he="ניתוח שוק">Market Analysis</div>
+          <div class="prompt-text" data-en="Stress-test our market sizing. Is the &#8362;200B → &#8362;10B → &#8362;2B funnel defensible? Find current Israeli infrastructure data." data-he="תעשה מבחן לחץ ל-market sizing שלנו. האם המשפך &#8362;200B → &#8362;10B → &#8362;2B הגנתי? תמצא נתוני תשתיות ישראליים עדכניים.">Stress-test our market sizing. Is the &#8362;200B → &#8362;10B → &#8362;2B funnel defensible? Find current Israeli infrastructure data.</div>
+          <div class="prompt-why" data-en="Ensures the market numbers survive investor scrutiny." data-he="מוודא שמספרי השוק ישרדו בדיקת משקיעים.">Ensures the market numbers survive investor scrutiny.</div>
+        </div>
+        <div class="prompt-card" onclick="copyPrompt(this)">
+          <span class="copy-hint"><i class="ti ti-copy"></i> <span data-en="Click to copy" data-he="לחצו להעתקה">Click to copy</span></span>
+          <div class="prompt-category" data-en="HTML Document" data-he="מסמך HTML">HTML Document</div>
+          <div class="prompt-text" data-en="Create a one-page executive summary of OptiPlan for investors as a polished HTML page." data-he="תיצור one-pager תקציר מנהלים של OptiPlan למשקיעים כדף HTML מלוטש.">Create a one-page executive summary of OptiPlan for investors as a polished HTML page.</div>
+          <div class="prompt-why" data-en="Produces a branded, professional document you can share as a link or print." data-he="מייצר מסמך ממותג ומקצועי שתוכלו לשתף כקישור או להדפיס.">Produces a branded, professional document you can share as a link or print.</div>
+        </div>
+        <div class="prompt-card" onclick="copyPrompt(this)">
+          <span class="copy-hint"><i class="ti ti-copy"></i> <span data-en="Click to copy" data-he="לחצו להעתקה">Click to copy</span></span>
+          <div class="prompt-category" data-en="Hebrew Mode" data-he="מצב עברית">Hebrew Mode</div>
+          <div class="prompt-text" data-en="&#1489;&#1493;&#1488; &#1504;&#1506;&#1489;&#1493;&#1491; &#1489;&#1506;&#1489;&#1512;&#1497;&#1514;. &#1514;&#1499;&#1497;&#1503; &#1500;&#1497; &#1505;&#1500;&#1497;&#1497;&#1491; &#1513;&#1500; &#1492;&#1502;&#1493;&#1491;&#1500; &#1492;&#1506;&#1505;&#1511;&#1497; &#1506;&#1501; &#1514;&#1502;&#1495;&#1493;&#1512;, &#1497;&#1493;&#1504;&#1497;&#1496; &#1488;&#1511;&#1493;&#1504;&#1493;&#1502;&#1497;&#1511;&#1505;, &#1493;&#1514;&#1495;&#1494;&#1497;&#1493;&#1514; &#1492;&#1499;&#1504;&#1505;&#1493;&#1514;." data-he="&#1489;&#1493;&#1488; &#1504;&#1506;&#1489;&#1493;&#1491; &#1489;&#1506;&#1489;&#1512;&#1497;&#1514;. &#1514;&#1499;&#1497;&#1503; &#1500;&#1497; &#1505;&#1500;&#1497;&#1497;&#1491; &#1513;&#1500; &#1492;&#1502;&#1493;&#1491;&#1500; &#1492;&#1506;&#1505;&#1511;&#1497; &#1506;&#1501; &#1514;&#1502;&#1495;&#1493;&#1512;, &#1497;&#1493;&#1504;&#1497;&#1496; &#1488;&#1511;&#1493;&#1504;&#1493;&#1502;&#1497;&#1511;&#1505;, &#1493;&#1514;&#1495;&#1494;&#1497;&#1493;&#1514; &#1492;&#1499;&#1504;&#1505;&#1493;&#1514;.">&#1489;&#1493;&#1488; &#1504;&#1506;&#1489;&#1493;&#1491; &#1489;&#1506;&#1489;&#1512;&#1497;&#1514;. &#1514;&#1499;&#1497;&#1503; &#1500;&#1497; &#1505;&#1500;&#1497;&#1497;&#1491; &#1513;&#1500; &#1492;&#1502;&#1493;&#1491;&#1500; &#1492;&#1506;&#1505;&#1511;&#1497; &#1506;&#1501; &#1514;&#1502;&#1495;&#1493;&#1512;, &#1497;&#1493;&#1504;&#1497;&#1496; &#1488;&#1511;&#1493;&#1504;&#1493;&#1502;&#1497;&#1511;&#1505;, &#1493;&#1514;&#1495;&#1494;&#1497;&#1493;&#1514; &#1492;&#1499;&#1504;&#1505;&#1493;&#1514;.</div>
+          <div class="prompt-why" data-en="OPIUM works in Hebrew too &mdash; natural Hibr-English like Israeli founders actually speak." data-he="OPIUM עובד גם בעברית &mdash; Hibr-English טבעי כמו שמייסדים ישראלים באמת מדברים.">OPIUM works in Hebrew too &mdash; natural Hibr-English like Israeli founders actually speak.</div>
+        </div>
+      </div>
+
+      <!-- DOCUMENT TYPES FOR BEN -->
+      <div class="section-divider">
+        <span class="divider-label" data-en="Document Types OPIUM Produces" data-he="סוגי מסמכים ש-OPIUM מייצר">Document Types OPIUM Produces</span>
+      </div>
+      <p data-en="All of these can be produced as HTML pages with OptiPlan branding, or as structured text for further editing. Ben can use Handoff Documents to carry context between OPIUM sessions and development work." data-he="כל אלה יכולים להיות מיוצרים כדפי HTML עם מיתוג OptiPlan, או כטקסט מובנה לעריכה נוספת. בן יכול להשתמש במסמכי Handoff כדי להעביר הקשר בין שיחות OPIUM ועבודת פיתוח.">All of these can be produced as HTML pages with OptiPlan branding, or as structured text for further editing. Ben can use Handoff Documents to carry context between OPIUM sessions and development work.</p>
+
+      <div class="doc-grid">
+        <div class="doc-card">
+          <div class="doc-card-format">HTML / Markdown</div>
+          <div class="doc-card-title" data-en="Executive Summary" data-he="תקציר מנהלים">Executive Summary</div>
+          <div class="doc-card-desc" data-en="One-page company overview with key metrics, market positioning, and investment thesis." data-he="סקירת חברה בעמוד אחד עם מדדים מרכזיים, מיצוב שוק, ותזת השקעה.">One-page company overview with key metrics, market positioning, and investment thesis.</div>
+        </div>
+        <div class="doc-card">
+          <div class="doc-card-format" data-en="Structured Text" data-he="טקסט מובנה">Structured Text</div>
+          <div class="doc-card-title" data-en="Slide Content Drafts" data-he="טיוטות תוכן שקפים">Slide Content Drafts</div>
+          <div class="doc-card-desc" data-en="Headlines, key numbers, and narratives for each investor deck slide." data-he="כותרות, מספרים מרכזיים, ונרטיבים לכל שקף במצגת למשקיעים.">Headlines, key numbers, and narratives for each investor deck slide.</div>
+        </div>
+        <div class="doc-card">
+          <div class="doc-card-format">HTML / Table</div>
+          <div class="doc-card-title" data-en="Financial Models" data-he="מודלים פיננסיים">Financial Models</div>
+          <div class="doc-card-desc" data-en="Revenue projections, unit economics, scenario analysis with concrete numbers." data-he="תחזיות הכנסות, unit economics, ניתוח תרחישים עם מספרים קונקרטיים.">Revenue projections, unit economics, scenario analysis with concrete numbers.</div>
+        </div>
+        <div class="doc-card">
+          <div class="doc-card-format">HTML / Markdown</div>
+          <div class="doc-card-title" data-en="Competitive Analysis" data-he="ניתוח תחרותי">Competitive Analysis</div>
+          <div class="doc-card-desc" data-en="Deep dives on specific competitors with feature comparison, pricing, and positioning." data-he="צלילות עומק למתחרים ספציפיים עם השוואת פיצ'רים, תמחור, ומיצוב.">Deep dives on specific competitors with feature comparison, pricing, and positioning.</div>
+        </div>
+        <div class="doc-card">
+          <div class="doc-card-format">HTML Template</div>
+          <div class="doc-card-title" data-en="Meeting Minutes" data-he="סיכומי ישיבות">Meeting Minutes</div>
+          <div class="doc-card-desc" data-en="Structured summaries with decisions, action items, open questions, and next steps." data-he="סיכומים מובנים עם החלטות, משימות, שאלות פתוחות, וצעדים הבאים.">Structured summaries with decisions, action items, open questions, and next steps.</div>
+        </div>
+        <div class="doc-card">
+          <div class="doc-card-format">Structured Markdown</div>
+          <div class="doc-card-title" data-en="Handoff Documents" data-he="מסמכי Handoff">Handoff Documents</div>
+          <div class="doc-card-desc" data-en="Cross-context continuity docs for Ben &mdash; carry session decisions and artifacts to the next conversation." data-he="מסמכי המשכיות בין הקשרים לבן &mdash; מעבירים החלטות ותוצרים מהשיחה לשיחה הבאה.">Cross-context continuity docs for Ben &mdash; carry session decisions and artifacts to the next conversation.</div>
+        </div>
+        <div class="doc-card">
+          <div class="doc-card-format" data-en="Decision Matrix" data-he="מטריצת החלטות">Decision Matrix</div>
+          <div class="doc-card-title" data-en="Pricing Comparisons" data-he="השוואות תמחור">Pricing Comparisons</div>
+          <div class="doc-card-desc" data-en="Multi-criteria evaluation of pricing models with competitive benchmarks." data-he="הערכה רב-קריטריונית של מודלי תמחור עם benchmarks תחרותיים.">Multi-criteria evaluation of pricing models with competitive benchmarks.</div>
+        </div>
+        <div class="doc-card">
+          <div class="doc-card-format" data-en="Q&amp;A Format" data-he="פורמט שאלות ותשובות">Q&amp;A Format</div>
+          <div class="doc-card-title" data-en="Investor Q&amp;A Prep" data-he="הכנת Q&amp;A למשקיעים">Investor Q&amp;A Prep</div>
+          <div class="doc-card-desc" data-en="Tough questions with drafted answers and confidence-building talking points." data-he="שאלות קשות עם תשובות מוכנות ונקודות שיחה לבניית ביטחון.">Tough questions with drafted answers and confidence-building talking points.</div>
+        </div>
+        <div class="doc-card">
+          <div class="doc-card-format" data-en="HTML / Calculator" data-he="HTML / מחשבון">HTML / Calculator</div>
+          <div class="doc-card-title" data-en="ROI Calculators" data-he="מחשבוני ROI">ROI Calculators</div>
+          <div class="doc-card-desc" data-en="Interactive investor ROI scenarios with adjustable parameters." data-he="תרחישי ROI אינטראקטיביים למשקיעים עם פרמטרים מתכווננים.">Interactive investor ROI scenarios with adjustable parameters.</div>
+        </div>
+      </div>
+
+      <!-- WHAT OPIUM KNOWS ABOUT YOU -->
+      <div class="section-divider">
+        <span class="divider-label" data-en="What OPIUM Knows About the Founders" data-he="מה OPIUM יודע על המייסדים">What OPIUM Knows About the Founders</span>
+      </div>
+      <p data-en="OPIUM has studied the call transcripts and decision patterns. It adapts its communication style based on who it's talking to." data-he="OPIUM למד את תמלולי השיחות ודפוסי ההחלטות. הוא מתאים את סגנון התקשורת לפי מי שהוא מדבר איתו.">OPIUM has studied the call transcripts and decision patterns. It adapts its communication style based on who it's talking to.</p>
+
+      <div class="founder-grid">
+        <div class="founder-card">
+          <div class="founder-card-header">
+            <div class="founder-name">Amit Zomerfreund</div>
+            <div class="founder-role" data-en="Business Lead &middot; Strategy &middot; Investors" data-he="מוביל עסקי &middot; אסטרטגיה &middot; משקיעים">Business Lead &middot; Strategy &middot; Investors</div>
+          </div>
+          <div class="founder-card-body">
+            <div class="founder-section-label" data-en="Decision Style" data-he="סגנון קבלת החלטות">Decision Style</div>
+            <p class="founder-detail" data-en="Pragmatic and action-oriented. Pushes for timelines and next steps. Values speed over perfection &mdash; &quot;even if it's half-baked.&quot;" data-he="פרגמטי ומוכוון פעולה. דוחף ללוחות זמנים וצעדים הבאים. מעדיף מהירות על שלמות &mdash; &quot;גם אם זה חצי מבושל.&quot;">Pragmatic and action-oriented. Pushes for timelines and next steps. Values speed over perfection &mdash; "even if it's half-baked."</p>
+            <div class="founder-section-label" data-en="How OPIUM Talks to Amit" data-he="איך OPIUM מדבר עם עמית">How OPIUM Talks to Amit</div>
+            <p class="founder-detail" data-en="Leads with strategic implications and market positioning. Uses analogies (Kodak, barber/machine). Frames as &quot;here's the story you tell investors.&quot; Gives data-backed confidence." data-he="מוביל עם השלכות אסטרטגיות ומיצוב שוק. משתמש באנלוגיות (קודאק, הספר/מכונה). ממסגר כ-&quot;הנה הסיפור שאתה מספר למשקיעים.&quot; נותן ביטחון מגובה בנתונים.">Leads with strategic implications and market positioning. Uses analogies (Kodak, barber/machine). Frames as "here's the story you tell investors." Gives data-backed confidence.</p>
+            <div class="founder-section-label" data-en="Key Concern" data-he="חשש מרכזי">Key Concern</div>
+            <p class="founder-detail" data-en="&quot;A technologist investor will fold us&quot; &mdash; the deck lacks technical depth to survive investor scrutiny." data-he="&quot;טכנולוג יקפל אותנו&quot; &mdash; למצגת חסר עומק טכנולוגי כדי לשרוד בחינת משקיעים.">"A technologist investor will fold us" &mdash; the deck lacks technical depth to survive investor scrutiny.</p>
+            <div class="founder-section-label" data-en="What Convinces Him" data-he="מה משכנע אותו">What Convinces Him</div>
+            <p class="founder-detail" data-en="Market size + gap framing. The &quot;Air Force pit&quot; metaphor. Concrete numbers and expert validation." data-he="גודל שוק + מסגור פער. המטאפורה של &quot;הבור של חיל האוויר&quot;. מספרים קונקרטיים וולידציה מומחים.">Market size + gap framing. The "Air Force pit" metaphor. Concrete numbers and expert validation.</p>
+          </div>
+        </div>
+
+        <div class="founder-card">
+          <div class="founder-card-header">
+            <div class="founder-name">Maor Dahan</div>
+            <div class="founder-role" data-en="Tech &amp; Product Lead &middot; Domain Expert" data-he="מוביל טכנולוגיה ומוצר &middot; מומחה תחום">Tech &amp; Product Lead &middot; Domain Expert</div>
+          </div>
+          <div class="founder-card-body">
+            <div class="founder-section-label" data-en="Decision Style" data-he="סגנון קבלת החלטות">Decision Style</div>
+            <p class="founder-detail" data-en="Long-term thinker, iterative builder. Holds architecture decisions loosely. Confident in domain depth &mdash; &quot;I couldn't care less about copycats.&quot;" data-he="חושב לטווח ארוך, בונה באיטרציות. מחזיק החלטות ארכיטקטורה בצורה רופפת. בטוח בעומק התחום &mdash; &quot;לא אכפת לי מחיקויים.&quot;">Long-term thinker, iterative builder. Holds architecture decisions loosely. Confident in domain depth &mdash; "I couldn't care less about copycats."</p>
+            <div class="founder-section-label" data-en="How OPIUM Talks to Maor" data-he="איך OPIUM מדבר עם מאור">How OPIUM Talks to Maor</div>
+            <p class="founder-detail" data-en="Leads with product logic and concrete examples. Ties business concepts back to product capabilities. Shows, doesn't just tell. Frames as &quot;here's how the product enables this.&quot;" data-he="מוביל עם לוגיקת מוצר ודוגמאות קונקרטיות. קושר מושגים עסקיים חזרה ליכולות המוצר. מראה, לא רק מספר. ממסגר כ-&quot;הנה איך המוצר מאפשר את זה.&quot;">Leads with product logic and concrete examples. Ties business concepts back to product capabilities. Shows, doesn't just tell. Frames as "here's how the product enables this."</p>
+            <div class="founder-section-label" data-en="Key Concern" data-he="חשש מרכזי">Key Concern</div>
+            <p class="founder-detail" data-en="&quot;It looks very generic&quot; &mdash; the product and deck need visual identity and technical depth narrative." data-he="&quot;זה נראה מאוד גנרי&quot; &mdash; המוצר והמצגת צריכים זהות ויזואלית ונרטיב עומק טכנולוגי.">"It looks very generic" &mdash; the product and deck need visual identity and technical depth narrative.</p>
+            <div class="founder-section-label" data-en="What Convinces Him" data-he="מה משכנע אותו">What Convinces Him</div>
+            <p class="founder-detail" data-en="&quot;Organizational intelligence&quot; framing. Modular architecture (Hub + modules). Agent ecosystem vision. Technical breakthroughs (Gmail automation)." data-he="מסגור &quot;אינטליגנציה ארגונית&quot;. ארכיטקטורה מודולרית (Hub + מודולים). חזון Agent ecosystem. פריצות דרך טכנולוגיות (אוטומציית Gmail).">"Organizational intelligence" framing. Modular architecture (Hub + modules). Agent ecosystem vision. Technical breakthroughs (Gmail automation).</p>
+          </div>
+        </div>
+      </div>
+
+      <blockquote class="founder-quote">
+        <p data-en="&quot;Something now is better than perfect later.&quot;" data-he="&quot;משהו עכשיו עדיף על מושלם אחר כך.&quot;">"Something now is better than perfect later."</p>
+        <cite data-en="&mdash; Amit &amp; Maor, shared operational philosophy" data-he="&mdash; עמית ומאור, פילוסופיה תפעולית משותפת">&mdash; Amit &amp; Maor, shared operational philosophy</cite>
+      </blockquote>
+
+      <!-- COMPANY KNOWLEDGE -->
+      <div class="section-divider">
+        <span class="divider-label" data-en="Company Knowledge in OPIUM's Memory" data-he="ידע חברה בזיכרון של OPIUM">Company Knowledge in OPIUM's Memory</span>
+      </div>
+
+      <div class="accordion">
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span data-en="Product: 8 Modules Across 3 Pillars" data-he="מוצר: 8 מודולים ב-3 עמודים">Product: 8 Modules Across 3 Pillars</span>
+            <span class="acc-arrow"><i class="ti ti-chevron-down"></i></span>
+          </div>
+          <div class="acc-body">
+            <div class="acc-body-inner">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th data-en="Product" data-he="מוצר">Product</th>
+                    <th data-en="Pillar" data-he="עמוד">Pillar</th>
+                    <th data-en="Status" data-he="סטטוס">Status</th>
+                    <th data-en="Key Value" data-he="ערך מרכזי">Key Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>OptiTrack</td><td data-en="Engineering" data-he="הנדסי">Engineering</td><td><span class="badge badge--live">BUILT</span></td><td data-en="Permit coordination across 61+ authorities" data-he="תיאום היתרים מול 61+ רשויות">Permit coordination across 61+ authorities</td></tr>
+                  <tr><td>OptiTrackFlow</td><td data-en="Engineering" data-he="הנדסי">Engineering</td><td><span class="badge badge--live">LIVE PILOT</span></td><td data-en="Workflow automation &mdash; real users" data-he="אוטומציית זרימת עבודה &mdash; משתמשים אמיתיים">Workflow automation &mdash; real users</td></tr>
+                  <tr><td>OptiDocs</td><td data-en="Administrative" data-he="מנהלי">Administrative</td><td><span class="badge badge--live">BUILT</span></td><td data-en="AI-powered tasks, letters, meeting summaries" data-he="משימות, מכתבים, סיכומי ישיבות מונעי AI">AI-powered tasks, letters, meeting summaries</td></tr>
+                  <tr><td>OptiRisk</td><td data-en="Engineering" data-he="הנדסי">Engineering</td><td><span class="badge badge--live">BUILT</span></td><td data-en="Risk registry with scoring and trends" data-he="רישום סיכונים עם ניקוד וטרנדים">Risk registry with scoring and trends</td></tr>
+                  <tr><td>OptiGantt</td><td data-en="Engineering" data-he="הנדסי">Engineering</td><td><span class="badge badge--live">BUILT</span></td><td data-en="Gantt charts + MS Project import" data-he="תרשימי גנט + ייבוא MS Project">Gantt charts + MS Project import</td></tr>
+                  <tr><td>OptiBiz</td><td data-en="Financial" data-he="פיננסי">Financial</td><td><span class="badge badge--live">BUILT</span></td><td data-en="Cashflow, proposals, invoicing" data-he="תזרים מזומנים, הצעות מחיר, חשבוניות">Cashflow, proposals, invoicing</td></tr>
+                  <tr><td>Hub Dashboard</td><td data-en="All Three" data-he="שלושתם">All Three</td><td><span class="badge badge--live">BUILT</span></td><td data-en="Real-time command center" data-he="מרכז פיקוד בזמן אמת">Real-time command center</td></tr>
+                  <tr><td>Shared Layer</td><td data-en="Foundation" data-he="תשתית">Foundation</td><td><span class="badge badge--live">BUILT</span></td><td data-en="Auth, shared entities, real-time data" data-he="הרשאות, ישויות משותפות, נתונים בזמן אמת">Auth, shared entities, real-time data</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span data-en="Market: &#8362;200B Industry, &#8362;2B Addressable" data-he="שוק: תעשיית &#8362;200B, &#8362;2B נגיש">Market: &#8362;200B Industry, &#8362;2B Addressable</span>
+            <span class="acc-arrow"><i class="ti ti-chevron-down"></i></span>
+          </div>
+          <div class="acc-body">
+            <div class="acc-body-inner">
+              <p data-en="Israeli civil engineering/infrastructure market: ~&#8362;200B/year. Planning &amp; management segment: ~5% = ~&#8362;10B. OptiPlan's target: 20% of that 5% = ~&#8362;2B addressable." data-he="שוק הנדסה אזרחית/תשתיות ישראלי: ~&#8362;200B לשנה. פלח תכנון וניהול: ~5% = ~&#8362;10B. יעד OptiPlan: 20% מה-5% הזה = ~&#8362;2B נגיש.">Israeli civil engineering/infrastructure market: ~&#8362;200B/year. Planning &amp; management segment: ~5% = ~&#8362;10B. OptiPlan's target: 20% of that 5% = ~&#8362;2B addressable.</p>
+              <p data-en="Current tools: Excel, WhatsApp, email, MS Project, Primavera P6 &mdash; all disconnected. 61+ infrastructure authorities across 12 categories must approve permits. No single platform covers all three pillars (engineering, administrative, financial)." data-he="כלים נוכחיים: Excel, WhatsApp, אימייל, MS Project, Primavera P6 &mdash; הכל מנותק. 61+ רשויות תשתיות ב-12 קטגוריות חייבות לאשר היתרים. אין פלטפורמה אחת שמכסה את כל שלושת העמודים (הנדסי, מנהלי, פיננסי).">Current tools: Excel, WhatsApp, email, MS Project, Primavera P6 &mdash; all disconnected. 61+ infrastructure authorities across 12 categories must approve permits. No single platform covers all three pillars (engineering, administrative, financial).</p>
+              <p data-en="International expansion: US + Europe by Year 3 (multiples of Israeli market)." data-he="התרחבות בינלאומית: ארה&quot;ב + אירופה עד שנה 3 (כפולות של השוק הישראלי).">International expansion: US + Europe by Year 3 (multiples of Israeli market).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span data-en="Fundraising: &#8362;4.5M Pre-Seed / Angel" data-he="גיוס: &#8362;4.5M Pre-Seed / אנג'ל">Fundraising: &#8362;4.5M Pre-Seed / Angel</span>
+            <span class="acc-arrow"><i class="ti ti-chevron-down"></i></span>
+          </div>
+          <div class="acc-body">
+            <div class="acc-body-inner">
+              <p><strong data-en="Target:" data-he="יעד:">Target:</strong> <span data-en="&#8362;4.5M (~$1.2M USD) for 24-month runway." data-he="&#8362;4.5M (~$1.2M) עבור runway של 24 חודשים.">&#8362;4.5M (~$1.2M USD) for 24-month runway.</span></p>
+              <p><strong data-en="Stage:" data-he="שלב:">Stage:</strong> <span data-en="Pre-seed / Angel. Current revenue: &#8362;0 (pilot is free)." data-he="Pre-seed / אנג'ל. הכנסות נוכחיות: &#8362;0 (הפיילוט חינמי).">Pre-seed / Angel. Current revenue: &#8362;0 (pilot is free).</span></p>
+              <p><strong data-en="Use of funds:" data-he="שימוש בכספים:">Use of funds:</strong> <span data-en="50% product development (hire 3-4 devs), 25% sales &amp; marketing (first 30 paying customers), 15% operations, 10% reserve." data-he="50% פיתוח מוצר (גיוס 3-4 מפתחים), 25% מכירות ושיווק (30 לקוחות משלמים ראשונים), 15% תפעול, 10% רזרבה.">50% product development (hire 3-4 devs), 25% sales &amp; marketing (first 30 paying customers), 15% operations, 10% reserve.</span></p>
+              <p><strong data-en="Key milestone:" data-he="אבן דרך מרכזית:">Key milestone:</strong> <span data-en="Feb 24, 2026 conference &mdash; 10-min presentation + angel investor round table." data-he="כנס 24 בפברואר 2026 &mdash; מצגת 10 דקות + שולחן עגול משקיעי אנג'ל.">Feb 24, 2026 conference &mdash; 10-min presentation + angel investor round table.</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span data-en="Investor Deck: Identified Gaps &amp; Priorities" data-he="מצגת משקיעים: פערים וסדרי עדיפויות שזוהו">Investor Deck: Identified Gaps &amp; Priorities</span>
+            <span class="acc-arrow"><i class="ti ti-chevron-down"></i></span>
+          </div>
+          <div class="acc-body">
+            <div class="acc-body-inner">
+              <p><strong data-en="Current strengths:" data-he="חוזקות נוכחיות:">Current strengths:</strong> <span data-en="Solid content foundation, industry resonance, working pilot, Gmail automation demo." data-he="בסיס תוכן מוצק, תהודה תעשייתית, פיילוט עובד, דמו אוטומציית Gmail.">Solid content foundation, industry resonance, working pilot, Gmail automation demo.</span></p>
+              <p><strong data-en="Critical gap:" data-he="פער קריטי:">Critical gap:</strong> <span data-en="Technology / Algorithm slide &mdash; &quot;If we present to a technologist with the current deck, they'll fold us.&quot;" data-he="שקף טכנולוגיה / אלגוריתם &mdash; &quot;אם נציג לטכנולוג עם המצגת הנוכחית, הוא יקפל אותנו.&quot;">Technology / Algorithm slide &mdash; "If we present to a technologist with the current deck, they'll fold us."</span></p>
+              <p><strong data-en="High-priority gaps:" data-he="פערים בעדיפות גבוהה:">High-priority gaps:</strong> <span data-en="Business plan / model slide, pricing model, differentiation / moat framing, ROI story for investors." data-he="שקף תוכנית עסקית / מודל, מודל תמחור, מסגור בידול / חפיר, סיפור ROI למשקיעים.">Business plan / model slide, pricing model, differentiation / moat framing, ROI story for investors.</span></p>
+              <p><strong data-en="Design:" data-he="עיצוב:">Design:</strong> <span data-en="Currently Canva &mdash; &quot;cute but not wow.&quot; Moving to professional HTML-based presentation." data-he="כרגע Canva &mdash; &quot;חמוד אבל לא wow.&quot; עוברים למצגת HTML מקצועית.">Currently Canva &mdash; "cute but not wow." Moving to professional HTML-based presentation.</span></p>
+              <p data-en="OPIUM can help draft content for every gap listed above." data-he="OPIUM יכול לעזור לכתוב תוכן לכל פער שרשום למעלה.">OPIUM can help draft content for every gap listed above.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span data-en="Competitors: Excel is the Real Incumbent" data-he="מתחרים: Excel הוא המתחרה האמיתי">Competitors: Excel is the Real Incumbent</span>
+            <span class="acc-arrow"><i class="ti ti-chevron-down"></i></span>
+          </div>
+          <div class="acc-body">
+            <div class="acc-body-inner">
+              <p data-en="The actual competitor is the disconnected tool stack every firm currently uses: Excel + WhatsApp + email + Word + MS Project." data-he="המתחרה האמיתי הוא ערימת הכלים המנותקים שכל חברה משתמשת בה כיום: Excel + WhatsApp + אימייל + Word + MS Project.">The actual competitor is the disconnected tool stack every firm currently uses: Excel + WhatsApp + email + Word + MS Project.</p>
+              <p><strong data-en="Key competitors investors will ask about:" data-he="מתחרים מרכזיים שמשקיעים ישאלו עליהם:">Key competitors investors will ask about:</strong> <span data-en="Procore (too expensive, no Hebrew, building focus), Monday.com (Hebrew but zero domain depth), Aconex/Oracle (enterprise overkill), Primavera P6 (scheduling only)." data-he="Procore (יקר מדי, בלי עברית, מיקוד בנייה), Monday.com (עברית אבל אפס עומק תחום), Aconex/Oracle (overkill ארגוני), Primavera P6 (לוחות זמנים בלבד).">Procore (too expensive, no Hebrew, building focus), Monday.com (Hebrew but zero domain depth), Aconex/Oracle (enterprise overkill), Primavera P6 (scheduling only).</span></p>
+              <p><strong data-en="What no competitor does:" data-he="מה שאף מתחרה לא עושה:">What no competitor does:</strong> <span data-en="Hebrew-first + authority matrix + all-in-one + Matal import + cross-domain intelligence." data-he="עברית-ראשון + מטריצת רשויות + all-in-one + ייבוא מטל + אינטליגנציה חוצת-תחומים.">Hebrew-first + authority matrix + all-in-one + Matal import + cross-domain intelligence.</span></p>
+              <p data-en="OPIUM has detailed profiles of 8+ competitors with feature comparisons, pricing, and positioning strategies." data-he="ל-OPIUM יש פרופילים מפורטים של 8+ מתחרים עם השוואות פיצ'רים, תמחור, ואסטרטגיות מיצוב.">OPIUM has detailed profiles of 8+ competitors with feature comparisons, pricing, and positioning strategies.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOUNDARIES -->
+      <div class="section-divider">
+        <span class="divider-label" data-en="What OPIUM Does &amp; Does Not Do" data-he="מה OPIUM כן ולא עושה">What OPIUM Does &amp; Does Not Do</span>
+      </div>
+
+      <div class="boundary-grid">
+        <div class="boundary-col">
+          <h3 style="color: var(--success);" data-en="OPIUM Handles" data-he="OPIUM מטפל">OPIUM Handles</h3>
+          <div class="boundary-item">
+            <div class="boundary-icon yes"><i class="ti ti-check"></i></div>
+            <span data-en="Business plan development &amp; market sizing" data-he="פיתוח תוכנית עסקית וגודל שוק">Business plan development &amp; market sizing</span>
+          </div>
+          <div class="boundary-item">
+            <div class="boundary-icon yes"><i class="ti ti-check"></i></div>
+            <span data-en="Investor pitch strategy, deck content &amp; narrative" data-he="אסטרטגיית pitch למשקיעים, תוכן ונרטיב מצגת">Investor pitch strategy, deck content &amp; narrative</span>
+          </div>
+          <div class="boundary-item">
+            <div class="boundary-icon yes"><i class="ti ti-check"></i></div>
+            <span data-en="Pricing model comparison &amp; recommendation" data-he="השוואת מודלי תמחור והמלצה">Pricing model comparison &amp; recommendation</span>
+          </div>
+          <div class="boundary-item">
+            <div class="boundary-icon yes"><i class="ti ti-check"></i></div>
+            <span data-en="ROI modeling &amp; financial projections" data-he="מודלי ROI ותחזיות פיננסיות">ROI modeling &amp; financial projections</span>
+          </div>
+          <div class="boundary-item">
+            <div class="boundary-icon yes"><i class="ti ti-check"></i></div>
+            <span data-en="Competitive analysis &amp; web research" data-he="ניתוח תחרותי ומחקר אינטרנטי">Competitive analysis &amp; web research</span>
+          </div>
+          <div class="boundary-item">
+            <div class="boundary-icon yes"><i class="ti ti-check"></i></div>
+            <span data-en="Formatted HTML documents &amp; one-pagers" data-he="מסמכי HTML מעוצבים ו-one-pagers">Formatted HTML documents &amp; one-pagers</span>
+          </div>
+          <div class="boundary-item">
+            <div class="boundary-icon yes"><i class="ti ti-check"></i></div>
+            <span data-en="Handoff documents for cross-context work with Ben" data-he="מסמכי Handoff לעבודה חוצת-הקשרים עם בן">Handoff documents for cross-context work with Ben</span>
+          </div>
+          <div class="boundary-item">
+            <div class="boundary-icon yes"><i class="ti ti-check"></i></div>
+            <span data-en="Investor Q&amp;A preparation &amp; role-play" data-he="הכנת Q&amp;A למשקיעים ומשחק תפקידים">Investor Q&amp;A preparation &amp; role-play</span>
+          </div>
+          <div class="boundary-item">
+            <div class="boundary-icon yes"><i class="ti ti-check"></i></div>
+            <span data-en="Hebrew &amp; English bilingual work" data-he="עבודה דו-לשונית עברית ואנגלית">Hebrew &amp; English bilingual work</span>
+          </div>
+        </div>
+
+        <div class="boundary-col">
+          <h3 style="color: var(--danger);" data-en="OPIUM Does Not Handle" data-he="OPIUM לא מטפל">OPIUM Does Not Handle</h3>
+          <div class="boundary-item">
+            <div class="boundary-icon no"><i class="ti ti-x"></i></div>
+            <span data-en="Writing production code or architecture decisions" data-he="כתיבת קוד ייצור או החלטות ארכיטקטורה">Writing production code or architecture decisions</span>
+          </div>
+          <div class="boundary-item">
+            <div class="boundary-icon no"><i class="ti ti-x"></i></div>
+            <span data-en="Legal advice (term sheets, IP, regulatory filings)" data-he="ייעוץ משפטי (term sheets, IP, הגשות רגולטוריות)">Legal advice (term sheets, IP, regulatory filings)</span>
+          </div>
+          <div class="boundary-item">
+            <div class="boundary-icon no"><i class="ti ti-x"></i></div>
+            <span data-en="Definitive financial advice (projections are models, not predictions)" data-he="ייעוץ פיננסי מוחלט (תחזיות הן מודלים, לא חיזויים)">Definitive financial advice (projections are models, not predictions)</span>
+          </div>
+          <div class="boundary-item">
+            <div class="boundary-icon no"><i class="ti ti-x"></i></div>
+            <span data-en="UI/UX design decisions for the product" data-he="החלטות עיצוב UI/UX למוצר">UI/UX design decisions for the product</span>
+          </div>
+          <div class="boundary-item">
+            <div class="boundary-icon no"><i class="ti ti-x"></i></div>
+            <span data-en="Replacing the business consultant (OPIUM is prep, not replacement)" data-he="החלפת היועץ העסקי (OPIUM הוא הכנה, לא החלפה)">Replacing the business consultant (OPIUM is prep, not replacement)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout callout--action">
+        <div class="callout-icon"><i class="ti ti-bulb"></i></div>
+        <div class="callout-content">
+          <strong>Pro tip:</strong> <span data-en="OPIUM works best when you give it a specific question or task. Instead of &quot;help me with the deck,&quot; try &quot;draft the competitive landscape slide showing why Monday.com can't do what we do.&quot; The more specific, the better the output." data-he="OPIUM עובד הכי טוב כשנותנים לו שאלה או משימה ספציפית. במקום &quot;עזור לי עם המצגת,&quot; נסו &quot;תכין שקף נוף תחרותי שמראה למה Monday.com לא יכול לעשות מה שאנחנו עושים.&quot; ככל שיותר ספציפי, כך התוצר טוב יותר.">OPIUM works best when you give it a specific question or task. Instead of "help me with the deck," try "draft the competitive landscape slide showing why Monday.com can't do what we do." The more specific, the better the output.</span>
+        </div>
+      </div>
+
+      <!-- HOW TO START -->
+      <div class="section-divider">
+        <span class="divider-label" data-en="How to Start a Session" data-he="איך מתחילים שיחה">How to Start a Session</span>
+      </div>
+
+      <div class="cap-grid">
+        <div class="cap-card">
+          <div class="cap-card-header">
+            <div class="cap-icon">1</div>
+            <span class="cap-title" data-en="Open the OPIUM Project in Claude" data-he="פתחו את פרויקט OPIUM ב-Claude">Open the OPIUM Project in Claude</span>
+          </div>
+          <p class="cap-desc" data-en="Go to <strong>claude.ai</strong> and open the <strong>OPIUM</strong> project. All of OPIUM's knowledge files are loaded as project context &mdash; no need to attach anything." data-he="היכנסו ל-<strong>claude.ai</strong> ופתחו את פרויקט <strong>OPIUM</strong>. כל קבצי הידע של OPIUM טעונים כהקשר פרויקט &mdash; אין צורך לצרף דבר.">Go to <strong>claude.ai</strong> and open the <strong>OPIUM</strong> project. All of OPIUM's knowledge files are loaded as project context &mdash; no need to attach anything.</p>
+        </div>
+        <div class="cap-card">
+          <div class="cap-card-header">
+            <div class="cap-icon">2</div>
+            <span class="cap-title" data-en="Start with a Specific Question or Task" data-he="התחילו עם שאלה או משימה ספציפית">Start with a Specific Question or Task</span>
+          </div>
+          <p class="cap-desc" data-en="Copy a prompt from the Quick Start section above, or ask your own question. Be specific about what you need: a slide draft, a pricing comparison, a competitive answer, or an analysis." data-he="העתיקו פרומפט ממדור ההתחלה המהירה למעלה, או שאלו שאלה משלכם. היו ספציפיים לגבי מה שאתם צריכים: טיוטת שקף, השוואת תמחור, תשובה תחרותית, או ניתוח.">Copy a prompt from the Quick Start section above, or ask your own question. Be specific about what you need: a slide draft, a pricing comparison, a competitive answer, or an analysis.</p>
+        </div>
+        <div class="cap-card">
+          <div class="cap-card-header">
+            <div class="cap-icon">3</div>
+            <span class="cap-title" data-en="Iterate and Challenge Back" data-he="חזרו על התהליך ואתגרו בחזרה">Iterate and Challenge Back</span>
+          </div>
+          <p class="cap-desc" data-en="OPIUM will challenge your assumptions &mdash; challenge it right back. Ask &quot;why?&quot; and &quot;what if?&quot;. Push for alternatives. The best outputs come from active dialogue." data-he="OPIUM יאתגר את ההנחות שלכם &mdash; אתגרו אותו בחזרה. שאלו &quot;למה?&quot; ו-&quot;מה אם?&quot;. דרשו חלופות. התוצרים הטובים ביותר מגיעים מדיאלוג פעיל.">OPIUM will challenge your assumptions &mdash; challenge it right back. Ask "why?" and "what if?". Push for alternatives. The best outputs come from active dialogue.</p>
+        </div>
+        <div class="cap-card">
+          <div class="cap-card-header">
+            <div class="cap-icon">4</div>
+            <span class="cap-title" data-en="Request the Artifact" data-he="בקשו את התוצר">Request the Artifact</span>
+          </div>
+          <p class="cap-desc" data-en="At the end of any session, ask for the deliverable: &quot;Create this as an HTML page,&quot; &quot;Produce a handoff document for Ben,&quot; or &quot;Give me the final decision matrix.&quot;" data-he="בסוף כל שיחה, בקשו את התוצר: &quot;תיצור את זה כדף HTML,&quot; &quot;תייצר מסמך Handoff לבן,&quot; או &quot;תן לי את מטריצת ההחלטות הסופית.&quot;">At the end of any session, ask for the deliverable: "Create this as an HTML page," "Produce a handoff document for Ben," or "Give me the final decision matrix."</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-icon"><i class="ti ti-language"></i></div>
+        <div class="callout-content">
+          <strong data-en="For Hebrew:" data-he="לעברית:">For Hebrew:</strong> <span data-en="OPIUM switches to full Hebrew (with English business terms) when you write in Hebrew. For proper right-to-left display, install the" data-he="OPIUM עובר לעברית מלאה (עם מונחים עסקיים באנגלית) כשאתם כותבים בעברית. לתצוגת ימין-לשמאל תקינה, התקינו את">OPIUM switches to full Hebrew (with English business terms) when you write in Hebrew. For proper right-to-left display, install the</span> <a href="https://chromewebstore.google.com/detail/rtl-responder/eedocbpbmjjhiomjjhihmgimclgoognad" target="_blank" data-en="RTL Responder Chrome extension" data-he="תוסף RTL Responder ל-Chrome">RTL Responder Chrome extension</a>.
+        </div>
+      </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="page-footer">
+      <div class="footer-content">
+        <span class="footer-brand">OptiPlan</span>
+        <span class="footer-separator">&middot;</span>
+        <span class="footer-tagline" data-en="AI-Powered Infrastructure Intelligence" data-he="מודיעין תשתיות מונע AI">AI-Powered Infrastructure Intelligence</span>
+        <span class="footer-meta" data-en="February 2026 &middot; Prepared by OPIUM" data-he="פברואר 2026 &middot; הוכן על ידי OPIUM">February 2026 &middot; Prepared by OPIUM</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Language Toggle
+    let currentLang = localStorage.getItem('opium-lang') || 'en';
+
+    function setLang(lang) {
+      currentLang = lang;
+      localStorage.setItem('opium-lang', lang);
+      document.documentElement.lang = lang === 'he' ? 'he' : 'en';
+      document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
+
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-he').classList.toggle('active', lang === 'he');
+
+      document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+        const val = el.getAttribute('data-' + lang);
+        if (val) el.innerHTML = val;
+      });
+    }
+
+    // Initialize language on load
+    if (currentLang === 'he') setLang('he');
+
+    // Tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Accordion
+    function toggleAcc(header) {
+      const item = header.parentElement;
+      const body = item.querySelector('.acc-body');
+      const isOpen = item.classList.contains('open');
+
+      if (isOpen) {
+        body.style.maxHeight = null;
+        item.classList.remove('open');
+      } else {
+        body.style.maxHeight = body.scrollHeight + 'px';
+        item.classList.add('open');
+      }
+    }
+
+    // Copy prompt
+    function copyPrompt(card) {
+      const text = card.querySelector('.prompt-text').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        card.classList.add('copied');
+        const hintText = card.querySelector('.copy-hint span');
+        const origEn = hintText.getAttribute('data-en');
+        const origHe = hintText.getAttribute('data-he');
+        hintText.textContent = currentLang === 'he' ? 'הועתק!' : 'Copied!';
+        setTimeout(() => {
+          card.classList.remove('copied');
+          hintText.textContent = currentLang === 'he' ? origHe : origEn;
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
